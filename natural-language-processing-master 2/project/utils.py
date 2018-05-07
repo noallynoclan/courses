@@ -50,7 +50,7 @@ def load_embeddings(embeddings_path):
     #### YOUR CODE HERE ####
     ########################
 
-        pass 
+    pass 
 
 def question_to_vec(question, embeddings, dim):
     """Transforms a string to an embedding by averaging word embeddings."""
@@ -61,7 +61,7 @@ def question_to_vec(question, embeddings, dim):
     #### YOUR CODE HERE ####
     ########################
 
-        pass
+    pass
 
 
 def unpickle_file(filename):
