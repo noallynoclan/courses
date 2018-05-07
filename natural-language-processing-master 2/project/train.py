@@ -1,9 +1,12 @@
 import os
-import sys
-import project.utils as utils
+import utils
 import numpy as np
 import pandas as pd
 import pickle
+
+import sys
+
+sys.path.append("..")
 from common.download_utils import download_project_resources
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.model_selection import train_test_split
