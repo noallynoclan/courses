@@ -6,8 +6,7 @@ from chatterbot import ChatBot
 
 class ThreadRanker(object):
     def __init__(self, paths):
-        self.word_embeddings, self.embeddings_dim = utils.load_embeddings(
-            paths['WORD_EMBEDDINGS'])
+        self.word_embeddings, self.embeddings_dim = utils.load_embeddings()
         self.thread_embeddings_folder = paths['THREAD_EMBEDDINGS_FOLDER']
 
     def __load_embeddings_by_tag(self, tag_name):
