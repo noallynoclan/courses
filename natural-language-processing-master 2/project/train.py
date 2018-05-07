@@ -1,6 +1,6 @@
 import os
 import sys
-import utils
+import project.utils as utils
 import numpy as np
 import pandas as pd
 import pickle
@@ -11,7 +11,6 @@ from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import accuracy_score
 from sklearn.multiclass import OneVsRestClassifier
 
-sys.path.append("..")
 download_project_resources()
 
 
