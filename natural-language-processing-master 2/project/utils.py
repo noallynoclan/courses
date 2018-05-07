@@ -2,6 +2,7 @@ import nltk
 import pickle
 import re
 import numpy as np
+import gensim
 
 nltk.download('stopwords')
 from nltk.corpus import stopwords
@@ -31,7 +32,7 @@ def text_prepare(text):
     return text.strip()
 
 
-def load_embeddings(embeddings_path):
+def load_embeddings(embeddings_path='../../../DATA/GoogleNews-vectors-negative300.bin.gz'):
     """Loads pre-trained word embeddings from tsv file.
 
     Args:
@@ -50,7 +51,9 @@ def load_embeddings(embeddings_path):
     #### YOUR CODE HERE ####
     ########################
 
-    pass 
+    embeddings = gensim.models.KeyedVectors.load_word2vec_format(embeddings_path, binary=True)
+    embeddings_dim = embeddings['word'].shape[0]
+    return embeddings, embeddings_dim 
 
 def question_to_vec(question, embeddings, dim):
     """Transforms a string to an embedding by averaging word embeddings."""
@@ -60,8 +63,13 @@ def question_to_vec(question, embeddings, dim):
     ########################
     #### YOUR CODE HERE ####
     ########################
-
-    pass
+    
+    word_list = [word for word in question.split() if word in embeddings]
+    try:
+        question_vec = embeddings[word_list].mean(axis=0)
+    except ValueError:
+        question_vec = np.zeros((dim,))
+    return question_vec
 
 
 def unpickle_file(filename):
